@@ -1,8 +1,8 @@
-# VHAP: Versatile Head Alignment with Adaptive Appearance Priors
+# Forked and Modified Version of VHAP (Versatile Head Alignment with Adaptive Appearance Priors)
 
-<div align="center"> 
+<!-- <div align="center"> 
   <img src="asset/teaser.gif">
-</div>
+</div> -->
 
 ## TL;DR
 
@@ -10,7 +10,7 @@
 - A perturbation mechanism that implicitly extract and inject regional appearance priors adaptively during rendering, enabling alignment of regions purely based on their appearance consistency, such as the hair, ears, neck, and shoulders, where no pre-defined landmarks are available.
 - The exported tracking results can be directly used to create you own [GaussianAvatars](https://github.com/ShenhanQian/GaussianAvatars).
 
-## License
+## Original License
 
 This work is made available under [CC-BY-NC-SA-4.0](./LICENSE). The repository is derived from the [multi-view head tracker of GaussianAvatars](https://github.com/ShenhanQian/GaussianAvatars/tree/main/reference_tracker), which is subjected to the following statements:
 
@@ -21,25 +21,25 @@ On top of the original repository, we add support to monocular videos and provid
 ## Setup
 
 ```shell
-git clone git@github.com:ShenhanQian/VHAP.git
-cd VHAP
+git clone https://github.com/PeizhiYan/VHAP-fork
+cd VHAP-fork
 
-conda create --name VHAP -y python=3.10
-conda activate VHAP
-
-# Install CUDA and ninja for compilation
-conda install -c "nvidia/label/cuda-12.1.1" cuda-toolkit ninja cmake  # use the right CUDA version
+# Simply follow environment setup in https://github.com/PeizhiYan/gaussian-dejavu
+conda create --name vhap -y python=3.10
+conda activate vhap
+conda install -c "nvidia/label/cuda-11.7.1" cuda-toolkit ninja
+# (Linux only) ----------
 ln -s "$CONDA_PREFIX/lib" "$CONDA_PREFIX/lib64"  # to avoid error "/usr/bin/ld: cannot find -lcudart"
-conda env config vars set CUDA_HOME=$CONDA_PREFIX  # for compilation
+# Install NVCC (optional, if the NVCC is not installed successfully try this)
+conda install -c conda-forge cudatoolkit=11.7 cudatoolkit-dev=11.7
+pip install torch==2.0.1 torchvision --index-url https://download.pytorch.org/whl/cu117
+pip install -r requirements.txt
 
-# Install PyTorch (make sure that the CUDA version matches with "Step 1")
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-# or
-conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia
-# make sure torch.cuda.is_available() returns True
-
+# Finally install VHAP
 pip install -e .
 ```
+
+
 
 > [!NOTE]
 > - We use an adjusted version of [nvdiffrast](https://github.com/ShenhanQian/nvdiffrast/tree/backface-culling) for backface-culling. If you have other versions installed before, you can reinstall as follows:
