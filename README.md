@@ -18,7 +18,7 @@ This work is made available under [CC-BY-NC-SA-4.0](./LICENSE). The repository i
 
 On top of the original repository, we add support to monocular videos and provide a complete set of scripts from video preprocessing to result export for NeRF/3DGS-style applications.
 
-## Setup
+## Setup (Modified)
 
 ```shell
 git clone https://github.com/PeizhiYan/VHAP-fork
@@ -39,8 +39,6 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
-
-
 > [!NOTE]
 > - We use an adjusted version of [nvdiffrast](https://github.com/ShenhanQian/nvdiffrast/tree/backface-culling) for backface-culling. If you have other versions installed before, you can reinstall as follows:
 >    ```shell
@@ -48,6 +46,7 @@ pip install -e .
 >    rm -r ~/.cache/torch_extensions/*/nvdiffrast*
 >    ```
 > - We use [STAR](https://github.com/ShenhanQian/STAR/) for landmark detection by default. Alterntively, [face-alignment](https://github.com/1adrianb/face-alignment) is faster but less accurate.
+
 
 ## Download
 
@@ -57,9 +56,13 @@ Our code relies on FLAME. Please download assets from the [official website](htt
 
 - FLAME 2023 (versions w/ jaw rotation) -> `asset/flame/flame2023.pkl`
 - FLAME Vertex Masks -> `asset/flame/FLAME_masks.pkl`
+- Follow https://github.com/TimoBolkart/BFM_to_FLAME to get ```FLAME_texture.npz``` and save to ```asset/flame/FLAME_texture.npz```
 
 > [!NOTE]
 > It is possible to use FLAME 2020 by download to `asset/flame/generic_model.pkl`. The `FLAME_MODEL_PATH` in `flame.py` needs to be updated accordingly.
+
+> [!WARNING]
+> FLAME 2020 and FLAME 2023 have different coefficients spaces, thus the coefficents are not interchangable.
 
 ### Video Data
 

@@ -34,8 +34,8 @@ from PIL import Image
 
 logger = get_logger(__name__)
 
-# FLAME_MODEL_PATH = "asset/flame/generic_model.pkl"
-FLAME_MODEL_PATH = "asset/flame/flame2023.pkl"
+FLAME_MODEL_PATH = "asset/flame/generic_model.pkl"
+# FLAME_MODEL_PATH = "asset/flame/flame2023.pkl"
 FLAME_MESH_PATH = "asset/flame/head_template_mesh.obj"
 FLAME_PARTS_PATH = "asset/flame/FLAME_masks.pkl"
 FLAME_LMK_PATH = "asset/flame/landmark_embedding_with_eyes.npy"
