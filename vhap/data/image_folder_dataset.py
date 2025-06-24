@@ -30,7 +30,11 @@ class ImageFolderDataset(Dataset):
 
         logger.info(f"Initializing dataset from folder {image_folder}")
 
-        self.image_paths = sorted(list(image_folder.glob('*.jpg')))
+        # self.image_paths = sorted(list(image_folder.glob('*.jpg')))
+        self.image_paths = sorted([
+            p for ext in ('*.jpg', '*.png')
+            for p in image_folder.glob(ext)
+        ])  # Support both jpg and png images
 
         if background_folder is not None:
             self.backgrounds = {}
