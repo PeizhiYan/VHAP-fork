@@ -27,7 +27,7 @@ class VideoDataset(Dataset):
             root_folder: Path to dataset with the following directory layout
                 <root_folder>/
                 |---images/
-                |   |---<timestep_id>.jpg
+                |   |---<timestep_id>.png
                 |
                 |---alpha_maps/
                 |   |---<timestep_id>.png
@@ -94,14 +94,14 @@ class VideoDataset(Dataset):
                 if self.cfg.n_downsample_rgb
                 else "images",
                 "per_timestep": True,
-                "suffix": "jpg",
-                # "suffix": "png",
+                # "suffix": "jpg",
+                "suffix": "png",
             },
             "alpha_map": {
                 "folder": "alpha_maps",
                 "per_timestep": True,
-                "suffix": "jpg",
-                # "suffix": "png",
+                # "suffix": "jpg",
+                "suffix": "png",
             },
             "landmark2d/face-alignment": {
                 "folder": "landmark2d/face-alignment",

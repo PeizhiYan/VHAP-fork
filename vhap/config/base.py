@@ -36,7 +36,7 @@ class DataConfig(Config):
     """The root folder for the dataset."""
     sequence: str
     """The sequence name"""
-    _target: str = "vhap.data.video_dataset.VideoDataset"
+    _target: str = "vhap.data.video_dataset_png.VideoDataset"
     """The target dataset class"""
     division: Optional[str] = None
     subset: Optional[str] = None
@@ -54,7 +54,8 @@ class DataConfig(Config):
     use_alpha_map: bool = False
     use_landmark: bool = True
     landmark_source: Optional[Literal['face-alignment', 'star']] = "star"
-    landmark_detector_njobs: int = 8
+    # landmark_detector_njobs: int = 8
+    landmark_detector_njobs: int = 1
     """The number of jobs for landmark detection. Set to 1 to use the main process."""
 
 

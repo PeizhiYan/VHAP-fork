@@ -27,6 +27,7 @@ class NersembleDataConfig(DataConfig):
     """(height, width). Will be use to convert principle points when the image size is not included in the camera parameters."""
     background_color: Optional[Literal['white', 'black']] = None
     landmark_source: Optional[Literal["face-alignment", 'star']] = "star"
+    landmark_detector_njobs: int = 8
 
     subject: str = ""
     """Subject ID. Such as 018, 218, 251, 253"""
