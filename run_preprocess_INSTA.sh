@@ -9,6 +9,7 @@ for SUBJECT in $(ls -1 "${DATASET_PATH}"); do
 
   INPUT_PATH=${SUBJECT_PATH}
 
+  # Check if matching path exists
   if compgen -G "$INPUT_PATH" > /dev/null; then
     echo "Processing SUBJECT: $SUBJECT"
 
