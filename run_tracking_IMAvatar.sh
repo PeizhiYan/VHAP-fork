@@ -12,8 +12,8 @@ for SUBJECT in "${SUBJECT_LIST[@]}"; do
 
   for SEQUENCE in $(ls -1 "${SUBJECT_PATH}"); do
 
-    INPUT_PATH="${DATASET_PATH}/${SUBJECT}/${SEQUENCE}"
-    TRACK_OUTPUT_PATH=${INPUT_PATH}
+    INPUT_PATH="${DATASET_PATH}/${SUBJECT}"
+    TRACK_OUTPUT_PATH="${INPUT_PATH}/${SEQUENCE}"
 
     # Check if matching path exists
     if compgen -G "$INPUT_PATH" > /dev/null; then
